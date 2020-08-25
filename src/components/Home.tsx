@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from "react";
 import traktService from "../services/trakt";
+import LastWatchedShows from "./LastWatchedShows";
 const Home = () => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    traktService.getAll().then((res) => {
+    traktService.getLastWatchedShows().then((res) => {
       setData(res);
-      console.log(data);
     });
   }, []);
 
-  return <div>Homepage</div>;
+  return (
+    <div>
+      Homepage
+      <LastWatchedShows data={data} />
+    </div>
+  );
 };
 
 export default Home;
