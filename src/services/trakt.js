@@ -2,27 +2,86 @@ import axios from "axios";
 const baseUrl = "https://api.trakt.tv";
 
 let token = null;
+const clientId =
+  "99b8f99564ecf2d2dfcb1c65084bd4e12617380f7073225fe4e184595cc2f157";
+
+const config = {
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: token,
+    "trakt-api-version": 2,
+    "trakt-api-key": clientId,
+  },
+};
 
 const setToken = (newToken) => {
   token = `Bearer ${newToken}`;
+  config.headers.Authorization = token;
 };
 
-const getAll = async () => {
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: token,
-      "trakt-api-version": 2,
-      "trakt-api-key":
-        "99b8f99564ecf2d2dfcb1c65084bd4e12617380f7073225fe4e184595cc2f157",
-    },
-  };
-  const response = await axios.get(
-    `${baseUrl}/calendars/my/shows/2014-09-01/7`,
-    config
-  );
+const getLastWatchedMovies = async () => {
+  const response = await axios.get(`${baseUrl}/sync/history/movies`, config);
   console.log("res: ", response);
   return response.data;
 };
 
-export default { getAll, setToken };
+const getWatchlistMovies = async () => {
+  const response = await axios.get(`${baseUrl}/sync/watchlist/movies`, config);
+  console.log("res: ", response);
+  return response.data;
+};
+
+const getAllWatchedMovies = async () => {
+  const response = await axios.get(`${baseUrl}/sync/watched/movies`, config);
+  console.log("res: ", response);
+  return response.data;
+};
+
+const getMovieRecommendations = async () => {
+  const response = await axios.get(`${baseUrl}/recommendations/movies`, config);
+  console.log("res: ", response);
+  return response.data;
+};
+
+const getLastWatchedShows = async () => {
+  const response = await axios.get(`${baseUrl}/sync/history/shows`, config);
+  console.log("res: ", response);
+  return response.data;
+};
+
+const getWatchlistShows = async () => {
+  const response = await axios.get(`${baseUrl}/sync/watchlist/shows`, config);
+  console.log("res: ", response);
+  return response.data;
+};
+
+const getAllWatchedShows = async () => {
+  const response = await axios.get(`${baseUrl}/sync/watched/shows`, config);
+  console.log("res: ", response);
+  return response.data;
+};
+
+const getShowRecommendations = async () => {
+  const response = await axios.get(`${baseUrl}/recommendations/shows`, config);
+  console.log("res: ", response);
+  return response.data;
+};
+
+const getStats = async () => {
+  const response = await axios.get(`${baseUrl}/users/me/stats`, config);
+  console.log("res: ", response);
+  return response.data;
+};
+
+export default {
+  getLastWatchedMovies,
+  getWatchlistMovies,
+  getAllWatchedMovies,
+  getMovieRecommendations,
+  getLastWatchedShows,
+  getWatchlistShows,
+  getAllWatchedShows,
+  getShowRecommendations,
+  getStats,
+  setToken,
+};
