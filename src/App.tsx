@@ -3,6 +3,7 @@ import "./App.css";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import { getAccessToken } from "./utils/utils";
+import traktService from "./services/trakt";
 
 const App = () => {
   const [token, setToken] = useState("");
@@ -11,6 +12,7 @@ const App = () => {
     const accessToken = getAccessToken();
     if (accessToken) {
       setToken(accessToken);
+      traktService.setToken(accessToken);
     }
   }, []);
 
