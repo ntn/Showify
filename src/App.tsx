@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Layout, Menu } from "antd";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Switch, Route, Link, Redirect } from "react-router-dom";
 import "./App.css";
 import Home from "./components/Home";
 import Login from "./components/Login";
+import Watchlist from "./components/Watchlist";
 import { getAccessToken } from "./utils/utils";
 import traktService from "./services/trakt";
 
 const App = () => {
   const [token, setToken] = useState("");
-  const { SubMenu } = Menu;
   const { Header, Content, Footer } = Layout;
   const padding = {
     padding: 5,
@@ -32,16 +32,19 @@ const App = () => {
               home
             </Link>
           </Menu.Item>
-
           <Menu.Item key="2">
             <Link style={padding} to="/history">
               history
             </Link>
           </Menu.Item>
-
           <Menu.Item key="3">
             <Link style={padding} to="/recommendations">
               recommendations
+            </Link>
+          </Menu.Item>
+          <Menu.Item key="4">
+            <Link style={padding} to="/watchlist">
+              watchlist
             </Link>
           </Menu.Item>
         </Menu>
@@ -49,7 +52,15 @@ const App = () => {
       <Content style={{ padding: "0 50px" }}>
         <div style={{ height: "calc(100vh - 55px)" }}>
           <Switch>
-            <Route path="/">{token ? <Home /> : <Login />}</Route>
+            <Route path="/watchlist">
+              {token ? <Watchlist /> : <Redirect to="/login" />}
+            </Route>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/">
+              {token ? <Home /> : <Redirect to="/login" />}
+            </Route>
           </Switch>
         </div>
       </Content>
