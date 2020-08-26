@@ -22,7 +22,9 @@ const App = () => {
     <Layout className="layout">
       <Header>Test</Header>
       <Content style={{ padding: "0 50px" }}>
-        {token ? <Home /> : <Login />}
+        <div style={{ height: "calc(100vh - 55px)" }}>
+          {token ? <Home /> : <Login />}
+        </div>
       </Content>
       <Footer style={{ textAlign: "center" }}>Created by Neethan</Footer>
     </Layout>
