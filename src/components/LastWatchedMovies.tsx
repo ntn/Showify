@@ -16,7 +16,7 @@ const LastWatchedMovies = (props: any) => {
         {props.data ? (
           props.data.map(
             (movie: { id: number; movie: MovieObject; watched_at: string }) => (
-              <Col span={14} flex="1 1 200px">
+              <Col key={movie.id} span={14} flex="1 1 200px">
                 <Movie
                   key={movie.id}
                   title={movie.movie.title}
