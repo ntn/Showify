@@ -16,7 +16,7 @@ const getPosterForShow = async (showId) => {
 
   let imageUrl = "../images/NoImgFound.jpg";
   const images = response.data.posters;
-  if (images) {
+  if (images && images[0].file_path) {
     imageUrl = constructImageUrl(images[0].file_path);
   }
   return imageUrl;
@@ -29,7 +29,7 @@ const getPosterForMovies = async (movieId) => {
 
   let imageUrl = "../images/NoImgFound.jpg";
   const images = response.data.posters;
-  if (images) {
+  if (images && images[0].file_path) {
     imageUrl = constructImageUrl(images[0].file_path);
   }
   return imageUrl;
