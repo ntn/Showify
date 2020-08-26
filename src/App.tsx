@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import Watchlist from "./components/Watchlist";
 import AllWatched from "./components/AllWatched";
+import Recommendations from "./components/Recommendations";
 import { getAccessToken } from "./utils/utils";
 import traktService from "./services/trakt";
 
@@ -55,6 +56,9 @@ const App = () => {
           <Switch>
             <Route path="/history">
               {token ? <AllWatched /> : <Redirect to="/login" />}
+            </Route>
+            <Route path="/recommendations">
+              {token ? <Recommendations /> : <Redirect to="/login" />}
             </Route>
             <Route path="/watchlist">
               {token ? <Watchlist /> : <Redirect to="/login" />}
