@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Layout, Menu } from "antd";
 import { Switch, Route, Link, Redirect } from "react-router-dom";
+import { getAccessToken } from "./utils/utils";
 import "./App.css";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Watchlist from "./components/Watchlist";
 import AllWatched from "./components/AllWatched";
 import Recommendations from "./components/Recommendations";
-import { getAccessToken } from "./utils/utils";
+import Stats from "./components/Stats";
 import traktService from "./services/trakt";
 
 const App = () => {
@@ -49,6 +50,11 @@ const App = () => {
               watchlist
             </Link>
           </Menu.Item>
+          <Menu.Item key="5">
+            <Link style={padding} to="/stats">
+              stats
+            </Link>
+          </Menu.Item>
         </Menu>
       </Header>
       <Content style={{ padding: "0 50px" }}>
@@ -62,6 +68,9 @@ const App = () => {
             </Route>
             <Route path="/watchlist">
               {token ? <Watchlist /> : <Redirect to="/login" />}
+            </Route>
+            <Route path="/stats">
+              {token ? <Stats /> : <Redirect to="/login" />}
             </Route>
             <Route path="/login">
               <Login />

@@ -21,55 +21,46 @@ const setToken = (newToken) => {
 
 const getLastWatchedMovies = async () => {
   const response = await axios.get(`${baseUrl}/sync/history/movies`, config);
-  console.log("res: ", response);
   return response.data;
 };
 
 const getWatchlistMovies = async () => {
   const response = await axios.get(`${baseUrl}/sync/watchlist/movies`, config);
-  console.log("res: ", response);
   return response.data;
 };
 
 const getAllWatchedMovies = async () => {
   const response = await axios.get(`${baseUrl}/sync/watched/movies`, config);
-  console.log("res: ", response);
   return response.data;
 };
 
 const getMovieRecommendations = async () => {
   const response = await axios.get(`${baseUrl}/recommendations/movies`, config);
-  console.log("res: ", response);
   return response.data;
 };
 
 const getLastWatchedShows = async () => {
   const response = await axios.get(`${baseUrl}/sync/history/shows`, config);
-  console.log("res: ", response);
   return response.data;
 };
 
 const getWatchlistShows = async () => {
   const response = await axios.get(`${baseUrl}/sync/watchlist/shows`, config);
-  console.log("res: ", response);
   return response.data;
 };
 
 const getAllWatchedShows = async () => {
   const response = await axios.get(`${baseUrl}/sync/watched/shows`, config);
-  console.log("res: ", response);
   return response.data;
 };
 
 const getShowRecommendations = async () => {
   const response = await axios.get(`${baseUrl}/recommendations/shows`, config);
-  console.log("res: ", response);
   return response.data;
 };
 
 const getStats = async () => {
   const response = await axios.get(`${baseUrl}/users/me/stats`, config);
-  console.log("res: ", response);
   return response.data;
 };
 

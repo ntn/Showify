@@ -10,7 +10,6 @@ const Home = () => {
     traktService.getLastWatchedShows().then((res) => {
       setLastWatchedEpisodesData(res);
     });
-
     traktService.getLastWatchedMovies().then((res) => {
       setLastWatchedMoviesData(res);
     });
