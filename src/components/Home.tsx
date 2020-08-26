@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import traktService from "../services/trakt";
-import LastWatchedShows from "./LastWatchedShows";
+import LastWatchedEpisodes from "./LastWatchedEpisodes";
 const Home = () => {
   const [data, setData] = useState(null);
 
@@ -12,8 +12,8 @@ const Home = () => {
 
   return (
     <div>
-      Homepage
-      <LastWatchedShows data={data} />
+      <br />
+      <LastWatchedEpisodes data={data} />
     </div>
   );
 };
