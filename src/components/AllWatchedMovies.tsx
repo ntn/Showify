@@ -2,10 +2,17 @@ import React from "react";
 import Movie from "./Movie";
 import { Row, Col } from "antd";
 
+type idObject = {
+  trakt: number;
+  slug: string;
+  imdb: string;
+  tmdb: number;
+};
+
 type MovieObject = {
   title: string;
   year: number;
-  ids: object;
+  ids: idObject;
 };
 
 const AllWatchedMovies = (props: any) => {
@@ -15,10 +22,10 @@ const AllWatchedMovies = (props: any) => {
       <Row>
         {props.data ? (
           props.data.map(
-            (movie: { id: number; movie: MovieObject; listed_at: string }) => (
-              <Col key={movie.id} span={14} flex="1 1 200px">
+            (movie: { movie: MovieObject; last_watched_at: string }) => (
+              <Col key={movie.movie.ids.trakt} span={14} flex="1 1 200px">
                 <Movie
-                  key={movie.id}
+                  key={movie.movie.ids.trakt}
                   title={movie.movie.title}
                   yearOfRelease={movie.movie.year}
                   imgIds={movie.movie.ids}

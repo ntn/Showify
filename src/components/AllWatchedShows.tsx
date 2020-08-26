@@ -2,10 +2,19 @@ import React from "react";
 import Show from "./Show";
 import { Row, Col } from "antd";
 
+type idObject = {
+  trakt: number;
+  slug: string;
+  tvdb: number;
+  imdb: string;
+  tmdb: number;
+  tvrage: number;
+};
+
 type ShowObject = {
   title: string;
   year: number;
-  ids: object;
+  ids: idObject;
 };
 
 const AllWatchedShows = (props: any) => {
@@ -15,10 +24,10 @@ const AllWatchedShows = (props: any) => {
       <Row>
         {props.data ? (
           props.data.map(
-            (show: { id: number; show: ShowObject; listed_at: string }) => (
-              <Col key={show.id} span={14} flex="1 1 200px">
+            (show: { show: ShowObject; last_watched_at: string }) => (
+              <Col key={show.show.ids.trakt} span={14} flex="1 1 200px">
                 <Show
-                  key={show.id}
+                  key={show.show.ids.trakt}
                   title={show.show.title}
                   yearOfRelease={show.show.year}
                   imgIds={show.show.ids}
