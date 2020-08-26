@@ -3,10 +3,6 @@ import Episode from "./Episode";
 import { Row, Col } from "antd";
 
 const LastWatchedEpisodes = (props: any) => {
-  if (props.data) {
-    console.log(props.data);
-  }
-
   return (
     <div>
       <h2>Last Watched Episodes</h2>
@@ -14,12 +10,12 @@ const LastWatchedEpisodes = (props: any) => {
         {props.data ? (
           props.data.map(
             (episode: {
-              id: any;
-              show: any;
-              episode: any;
-              watched_at: any;
+              id: number;
+              show: object;
+              episode: object;
+              watched_at: string;
             }) => (
-              <Col span={14} flex="1 1 200px">
+              <Col key={episode.id} span={14} flex="1 1 200px">
                 <Episode
                   key={episode.id}
                   show={episode.show}

@@ -3,7 +3,7 @@ import { Card } from "antd";
 import tmdbService from "../services/tmdb";
 import defaultImg from "../images/NoImgFound.jpg";
 
-const Episode = (props: any) => {
+const Movie = (props: any) => {
   const [poster, setPoster] = useState(defaultImg);
   const { Meta } = Card;
 
@@ -12,7 +12,7 @@ const Episode = (props: any) => {
   }, []);
 
   const getPosterImage = async () => {
-    const res = await tmdbService.getPosterForShow(props.show.ids.tmdb);
+    const res = await tmdbService.getPosterForMovies(props.imgIds.tmdb);
     setPoster(res);
   };
 
@@ -22,15 +22,15 @@ const Episode = (props: any) => {
       <Card
         hoverable
         style={{ width: 220 }}
-        cover={<img alt={props.show.title} src={poster} />}
+        cover={<img alt={props.title} src={poster} />}
       >
         <Meta
-          title={props.episode.title}
-          description={`Season ${props.episode.season}: Episode ${props.episode.number}`}
+          title={props.title}
+          description={`Released: ${props.yearOfRelease}`}
         />
       </Card>
     </div>
   );
 };
 
-export default Episode;
+export default Movie;
