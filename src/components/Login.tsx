@@ -4,9 +4,9 @@ import logo from "../images/trakt.png";
 
 const Login = () => {
   const loginUrl =
-    process.env.ENV === "test"
+    "test" === "test"
       ? "http://localhost:8080/api/login"
-      : "http://fierce-woodland-56626.herokuapp.com/api/login";
+      : "http://showify.herokuapp.com/api/login";
 
   return (
     <div>

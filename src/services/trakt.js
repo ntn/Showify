@@ -20,7 +20,10 @@ const setToken = (newToken) => {
 };
 
 const getLastWatchedMovies = async () => {
-  const response = await axios.get(`${baseUrl}/sync/history/movies`, config);
+  const response = await axios.get(
+    `http://localhost:8080/api/trakt/lastwatched/movies`,
+    config
+  );
   return response.data;
 };
 
@@ -40,7 +43,10 @@ const getMovieRecommendations = async () => {
 };
 
 const getLastWatchedShows = async () => {
-  const response = await axios.get(`${baseUrl}/sync/history/shows`, config);
+  const response = await axios.get(
+    `http://localhost:8080/api/trakt/lastwatched/shows`,
+    config
+  );
   return response.data;
 };
 
@@ -60,7 +66,10 @@ const getShowRecommendations = async () => {
 };
 
 const getStats = async () => {
-  const response = await axios.get(`${baseUrl}/users/me/stats`, config);
+  const response = await axios.get(
+    `http://localhost:8080/api/trakt/stats`,
+    config
+  );
   return response.data;
 };
 
