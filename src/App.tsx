@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Layout, Menu } from "antd";
-import { Switch, Route, Link, Redirect } from "react-router-dom";
+import {
+  Switch,
+  Route,
+  Link,
+  Redirect,
+  useRouteMatch,
+  useHistory,
+} from "react-router-dom";
 import { getAccessToken } from "./utils/utils";
 import "./App.css";
 import Home from "./components/Home";
@@ -31,7 +38,7 @@ const App = () => {
       <Header className="header">
         <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["1"]}>
           <Menu.Item key="1">
-            <Link style={padding} to="/">
+            <Link style={padding} to="/home">
               home
             </Link>
           </Menu.Item>
@@ -75,8 +82,11 @@ const App = () => {
             <Route path="/login">
               <Login />
             </Route>
-            <Route path="/">
+            <Route path="/home">
               {token ? <Home /> : <Redirect to="/login" />}
+            </Route>
+            <Route path="/">
+              {token ? <Redirect to="/home" /> : <Login />}
             </Route>
           </Switch>
         </div>
