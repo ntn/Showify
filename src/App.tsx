@@ -1,13 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Layout, Menu } from "antd";
-import {
-  Switch,
-  Route,
-  Link,
-  Redirect,
-  useRouteMatch,
-  useHistory,
-} from "react-router-dom";
+import { Switch, Route, Link, Redirect } from "react-router-dom";
 import { getAccessToken } from "./utils/utils";
 import "./App.css";
 import Home from "./components/Home";

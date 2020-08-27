@@ -18,7 +18,7 @@ type MovieObject = {
 const AllWatchedMovies = (props: any) => {
   return (
     <div>
-      <h2>All Movies Watched</h2>
+      <h2>All Watched Movies</h2>
       <Row>
         {props.data ? (
           props.data.map(
