@@ -6,7 +6,7 @@ const Login = () => {
   const loginUrl =
     process.env.ENV === "test"
       ? "http://localhost:8080/api/login"
-      : "http://showify.herokuapp.com/api/login";
+      : "https://showify.herokuapp.com/api/login";
 
   return (
     <div>

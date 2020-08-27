@@ -2,7 +2,7 @@ import axios from "axios";
 const baseUrl =
   process.env.ENV === "test"
     ? "http://localhost:8080/api/trakt"
-    : "http://showify.herokuapp.com/api/trakt";
+    : "https://showify.herokuapp.com/api/trakt";
 
 let token = null;
 
